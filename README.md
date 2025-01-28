@@ -49,7 +49,7 @@ This project implements a Retrieval-Augmented Generation (RAG) chatbot using Fla
 
 4. Add your PDF file(that you want to use the chatbot from): Place the PDF document you want to use in the project directory and update the pdf_file_path in the code.
 
-   ## Usage
+## Usage
 
 1. Start the Flask Server
 Run the app(in terminal):
@@ -71,23 +71,26 @@ The server will start at http://127.0.0.1:5000.
 
 
 ## How It Works
--Document Preprocessing:
 
-- Reads a PDF file.
-- Cleans and splits the text into ~300-word chunks.
-- Embedding:
+1. **Document Preprocessing**  
+   - Reads a PDF file.  
+   - Cleans and splits the text into ~300-word chunks.
 
-- Generates embeddings for each chunk using the sentence-transformers library.
-- Stores these embeddings in a FAISS vector database.
-- Querying:
+2. **Embedding**  
+   - Generates embeddings for each chunk using the `sentence-transformers` library.  
+   - Stores these embeddings in a FAISS vector database.
 
-- User query is embedded and compared with stored embeddings in FAISS.
-- Retrieves the top-k most relevant chunks.
-- Answer Generation:
-- Combines relevant chunks with the user query to generate an answer.
- - Chat History:
+3. **Querying**  
+   - Embeds the user query using the same `sentence-transformers` model.  
+   - Compares the query embedding with stored embeddings in FAISS.  
+   - Retrieves the top-k most relevant chunks.
 
-- Saves user queries and system answers in a MySQL database for future reference.
+4. **Answer Generation**  
+   - Combines the relevant chunks with the user query to generate a context-aware answer.
+
+5. **Chat History**  
+   - Saves user queries and system answers in a MySQL database for future reference.
+
 
 
   
